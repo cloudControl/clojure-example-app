@@ -7,20 +7,20 @@
           [compojure.handler :as handler]))
 
 (defroutes main-routes
-  (GET "/" [] "<!doctype html>
+  (GET "/" [] (format "<!doctype html>
 <html>
 <head>
 	<link href='helloworld.css' rel='stylesheet' type='text/css'/>
 	<title>Hello World in Clojure</title>
 </head>
 <body>
-	<strong>Hello world, I'm a Clojure app running on cloudControl!</strong>
+	<strong>Hello world, I'm a Clojure app!</strong>
   <footer>
-    Coming from the <a href='https://www.cloudcontrol.com/dev-center/Quickstart'>Quickstart</a>?
-    Check out <a href='https://www.cloudcontrol.com/dev-center/Guides/Java/Clojure%20-%20HelloWorld'>the explanation</a>.
+    Coming from the <a href='https:///doc.%1$s/Quickstart'>Quickstart</a>?
+    Check out <a href='https://doc.%1$s/Guides/Java/Clojure%%20-%%20HelloWorld'>the explanation</a>.
   </footer>
 </body>
-</html>")
+</html>" (or (System/getenv "DOMAIN") "www.cloucontrol.com")))
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
 
